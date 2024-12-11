@@ -128,7 +128,7 @@ uses
 end.        
 ```
 
-Модуль ``B`` осталься таким же. Но это **плохой пример**, который использоваться не стоит.
+Модуль ``B`` осталься таким же. Но это **плохой пример**, который использовать не стоит.
 
 #### Петли
 
@@ -144,7 +144,7 @@ type
   TRecursionLoop = class
   public
     procedure A;
-    function B(ANumber: Integer): Integer
+    function B(ANumber: Integer): Integer;
   end;
   
 implementation
