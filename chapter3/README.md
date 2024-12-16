@@ -181,6 +181,37 @@ graph
 
 ## Управление зависимостями
 
+### Реализация или интерфейсы
+
+Клиенту интерфейса не нужно знать как он реализован, т.к. это привязывает к конкретной реализации.
+
+Приведение ссылки на интерфйес к любой релизации - **всегда** плохая идея.
+
+### Ключевое слово new  как признак плохого кода
+
+Для Object Pascal, с учётом контекста последующего текста, это можно сказать так: "Создание экземпляров внутри класса как признак плохого кода".
+
+**Листинг 3.6 Пример того, как создание экземпляров лишает код возможности быть адаптивным**:
+
+```Pascal
+TAccountController = class
+strict private
+  FSecurityService: TSecurityService;
+public
+  constructor Create; override;
+  procedure ChangePassword(AUserID: TGUID; ANewPassword: String);
+end;
+
+constructor TAccountController.Create;
+begin
+  FSecurityService := TSecurityService.Create;
+end;
+
+procedure ChangePassword(AUserID: TGUID; ANewPassword: String);
+begin
+  
+end;
+```
 
 ## Разделение на уровни
 
