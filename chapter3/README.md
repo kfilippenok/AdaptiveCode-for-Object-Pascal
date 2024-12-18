@@ -207,11 +207,18 @@ begin
   FSecurityService := TSecurityService.Create;
 end;
 
-procedure ChangePassword(AUserID: TGUID; ANewPassword: String);
+procedure TAccountController.ChangePassword(AUserID: TGUID; ANewPassword: String);
+var
+  UserRepository: TUserRepository;
+  User: TUser;
 begin
-  
+  UserRepository := TUserRepository.Create;
+  User := UserRepository.GetByID(AUserID);
+  Self.FSecurityService.ChangePassword(User, ANewPassword) 
 end;
 ```
+
+Данный пример в оригинале имеет контекст с ASP.NET MVC, в рамках которого и существует контроллер. Нам важно понимать, что обязанность контроллера заключается в том, чтобы позволить пользователю выполнять запросы и команды, связанные с учётной записью. 
 
 ## Разделение на уровни
 
